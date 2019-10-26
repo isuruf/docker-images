@@ -20,4 +20,8 @@ conda list
 # check that we can install a conda package
 conda install --yes --quiet conda-forge-pinning -c conda-forge
 
+if [[ "$DOCKERIMAGE" == "linux-anvil-cuda" ]]; then
+  conda install --yes gxx_linux-64 nvcc_linux-64
+fi
+
 touch /home/conda/feedstock_root/build_artifacts/conda-forge-build-done

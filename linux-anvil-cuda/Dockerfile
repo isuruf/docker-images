@@ -1,6 +1,6 @@
 ARG CUDA_VER
 
-FROM nvidia/cuda:${CUDA_VER}-devel-centos6
+FROM centos:6
 
 LABEL maintainer="conda-forge <conda-forge@googlegroups.com>"
 
@@ -10,9 +10,6 @@ ENV CUDA_VER ${CUDA_VER}
 
 # Set an encoding to make things work smoothly.
 ENV LANG en_US.UTF-8
-
-# Set path to CUDA install.
-ENV CUDA_HOME /usr/local/cuda
 
 # Add a timestamp for the build. Also, bust the cache.
 ADD http://worldclockapi.com/api/json/utc/now /opt/docker/etc/timestamp
@@ -68,6 +65,18 @@ RUN source /opt/conda/etc/profile.d/conda.sh && \
     conda clean -tiy && \
     chgrp -R lucky /opt/conda && \
     chmod -R g=u /opt/conda
+
+# Download cudatoolkit and add to PATH
+RUN source /opt/conda/etc/profile.d/conda.sh && \
+    conda create -n cuda${CUDA_VER} && \
+    conda install -n cuda${CUDA_VER} --yes --quiet \
+        cudatoolkit-dev=${CUDA_VER}.* && \
+    conda remove --yes --quiet -n test --all && \
+    conda clean -tiy && \
+    chgrp -R lucky /opt/conda && \
+    chmod -R g=u /opt/conda
+
+ENV PATH="${PATH}:/opt/conda/envs/cuda${CUDA_VER}/bin"
 
 # Add a file for users to source to activate the `conda`
 # environment `base`. Also add a file that wraps that for
