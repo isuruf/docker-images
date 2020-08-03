@@ -12,9 +12,6 @@ LABEL maintainer="conda-forge <conda-forge@googlegroups.com>"
 ARG CUDA_VER
 ENV CUDA_VER ${CUDA_VER}
 
-# Add qemu in here so that we can use this image on regular linux hosts with qemu user installed
-ADD qemu-ppc64le-static /usr/bin/qemu-ppc64le-static
-
 # Set an encoding to make things work smoothly.
 ENV LANG en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8

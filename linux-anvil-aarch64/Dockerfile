@@ -1,7 +1,5 @@
 FROM arm64v8/centos:7
 
-ADD qemu-aarch64-static /usr/bin/qemu-aarch64-static
-
 LABEL maintainer="conda-forge <conda-forge@googlegroups.com>"
 
 # Set an encoding to make things work smoothly.
