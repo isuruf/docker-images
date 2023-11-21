@@ -5,8 +5,6 @@ FROM --platform=linux/arm64 nvidia/cuda:${CUDA_VER}-devel-${DISTRO_NAME}${DISTRO
 
 LABEL maintainer="conda-forge <conda-forge@googlegroups.com>"
 
-ADD qemu-aarch64-static /usr/bin/qemu-aarch64-static
-
 # Set CUDA_VER during runtime.
 ARG CUDA_VER
 ARG DISTRO_NAME

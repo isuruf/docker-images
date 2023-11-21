@@ -89,10 +89,6 @@ RUN for HEADER_FILE in cublas_api.h cublas.h cublasLt.h cublas_v2.h cublasXt.h n
     fi; \
     done
 
-# Add qemu in here so that we can use this image on regular linux hosts with qemu user installed
-ADD qemu-aarch64-static /usr/bin/qemu-aarch64-static
-ADD qemu-ppc64le-static /usr/bin/qemu-ppc64le-static
-
 # Add a file for users to source to activate the `conda`
 # environment `base`. Also add a file that wraps that for
 # use with the `ENTRYPOINT`.

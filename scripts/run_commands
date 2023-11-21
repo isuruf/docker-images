@@ -71,3 +71,21 @@ echo "tini ${CONDA_TINI_INFO[1]}" >> /opt/conda/conda-meta/pinned
 groupadd -g 32766 lucky
 chown -R $USER /opt/conda
 chgrp -R lucky /opt/conda && chmod -R g=u /opt/conda
+
+# Download QEMU binaries
+qemu_version='8.1.2'
+qemu_build='1.fc40'
+for arch in aarch64 ppc64le s390x; do
+    curl -sL \
+        "https://kojipkgs.fedoraproject.org//packages/qemu/${qemu_version}/${qemu_build}/x86_64/qemu-user-static-${arch/ppc64le/ppc}-${qemu_version}-${qemu_build}.x86_64.rpm" |
+        /opt/conda/bin/bsdtar -xf- --strip-components=3 ./usr/bin/qemu-${arch}-static
+done
+sha256sum --check << 'EOF'
+955be1e1f1e0ed1f5180d35db92012be558bd860d90a189276b445b6ba9a46c9  qemu-aarch64-static
+02b20dbf38e69a12d942c5fb1477160bab9da3fd428246e8fe011a2adced0fb6  qemu-ppc64le-static
+9e7d91557640d5ff4209f5894d2e648373752bdb7b664038ceddc371044b79e4  qemu-s390x-static
+EOF
+
+for arch in aarch64 ppc64le s390x; do
+    mv qemu-${arch}-static /usr/bin/qemu-${arch}-static
+done

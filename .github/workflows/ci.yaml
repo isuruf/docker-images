@@ -243,7 +243,7 @@ jobs:
 
       - name: Configure qemu
         run: |
-          ./download-qemu-static.sh
+          docker run --rm --privileged multiarch/qemu-user-static:register --reset
 
       - name: Build image
         run: |

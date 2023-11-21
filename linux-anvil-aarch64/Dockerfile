@@ -2,8 +2,6 @@ ARG DISTRO_NAME
 ARG DISTRO_VER
 FROM arm64v8/${DISTRO_NAME}:${DISTRO_VER}
 
-ADD qemu-aarch64-static /usr/bin/qemu-aarch64-static
-
 LABEL maintainer="conda-forge <conda-forge@googlegroups.com>"
 
 ARG DISTRO_NAME

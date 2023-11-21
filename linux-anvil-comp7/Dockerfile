@@ -12,12 +12,6 @@ ENV DISTRO_NAME=${DISTRO_NAME} \
 # Set an encoding to make things work smoothly.
 ENV LANG en_US.UTF-8
 
-# Add qemu in here so that we can use this image on regular linux hosts with qemu user installed
-ADD qemu-aarch64-static /usr/bin/qemu-aarch64-static
-ADD qemu-arm-static /usr/bin/qemu-arm-static
-ADD qemu-ppc64le-static /usr/bin/qemu-ppc64le-static
-ADD qemu-s390x-static /usr/bin/qemu-s390x-static
-
 # bust the docker cache so that we always rerun the installs below
 ADD https://loripsum.net/api /opt/docker/etc/gibberish
 

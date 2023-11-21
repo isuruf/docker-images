@@ -9,9 +9,6 @@ FROM --platform=linux/ppc64le nvidia/cuda:${CUDA_VER}-devel-${DISTRO_NAME}${DIST
 
 LABEL maintainer="conda-forge <conda-forge@googlegroups.com>"
 
-# Add qemu in here so that we can use this image on regular linux hosts with qemu user installed
-ADD qemu-ppc64le-static /usr/bin/qemu-ppc64le-static
-
 # Set CUDA_VER during runtime.
 ARG CUDA_VER
 ARG DISTRO_NAME
