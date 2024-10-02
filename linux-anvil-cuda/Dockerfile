@@ -80,7 +80,6 @@ RUN source /opt/conda/etc/profile.d/conda.sh && \
     conda create -n test --yes --quiet --download-only \
         conda-forge::cudatoolkit=${CUDA_VER} \
         && \
-    conda remove --yes --quiet -n test --all && \
     conda clean -tiy && \
     chgrp -R lucky /opt/conda && \
     chmod -R g=u /opt/conda
