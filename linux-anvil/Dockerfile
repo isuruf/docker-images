@@ -33,7 +33,7 @@ RUN if [ "${DISTRO_ARCH}" = "arm64" ] && [ "${DISTRO_NAME}${DISTRO_VER}" = "cent
     fi
 
 # Add the archived repo URL and fix RPM imports
-ADD centos7-repos /tmp/centos7-repos
+ADD rpm-repos /tmp/rpm-repos
 ADD scripts/fix_rpm /opt/docker/bin/fix_rpm
 RUN /opt/docker/bin/fix_rpm
 
