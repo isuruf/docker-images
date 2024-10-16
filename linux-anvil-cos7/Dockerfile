@@ -40,8 +40,8 @@ RUN /opt/docker/bin/fix_rpm
 # Install basic requirements.
 COPY scripts/yum_clean_all /opt/docker/bin/
 RUN if [ "${DISTRO_NAME}${DISTRO_VER}" = "almalinux8" ]; then \
-      EXTRA_YUM_PKGS="glibc-minimal-langpack glibc-langpack-en" \
-    fi \
+      EXTRA_YUM_PKGS="glibc-minimal-langpack glibc-langpack-en"; \
+    fi && \
     yum update -y && \
     yum install -y \
         bzip2 \
