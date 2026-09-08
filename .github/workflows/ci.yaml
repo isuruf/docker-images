@@ -155,7 +155,7 @@ jobs:
 
           - DOCKERIMAGE: linux-anvil-riscv64
             DOCKERFILE: linux-anvil
-            DOCKERTAG: "alma10-kitten"
+            DOCKERTAG: "alma10"
             DISTRO_ARCH: "riscv64"
             DISTRO_NAME: "almalinux"
             DISTRO_VER: "10-kitten"
