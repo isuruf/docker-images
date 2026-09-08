@@ -153,6 +153,14 @@ jobs:
             DISTRO_VER: "10"
             SHORT_DESCRIPTION: "conda-forge build image for Alma 10 on ppc64le"
 
+          - DOCKERIMAGE: linux-anvil-riscv64
+            DOCKERFILE: linux-anvil
+            DOCKERTAG: "alma10-kitten"
+            DISTRO_ARCH: "riscv64"
+            DISTRO_NAME: "almalinux"
+            DISTRO_VER: "10-kitten"
+            SHORT_DESCRIPTION: "conda-forge build image for Alma 10 Kitten on riscv64"
+
     env:
       DOCKERIMAGE: ${{ matrix.cfg.DOCKERIMAGE }}
       DOCKERFILE: ${{ matrix.cfg.DOCKERFILE }}
