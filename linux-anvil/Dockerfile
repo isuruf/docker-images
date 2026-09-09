@@ -43,7 +43,7 @@ RUN /opt/docker/bin/fix_rpm
 
 # Install basic requirements.
 COPY scripts/yum_clean_all /opt/docker/bin/
-RUN if [ "${DISTRO_NAME}" = "almalinux" ]; then \
+RUN if [ "${DISTRO_NAME}" = "almalinux" ] || [ "${DISTRO_NAME}" = "rockylinux" ]; then \
       EXTRA_YUM_PKGS="glibc-minimal-langpack glibc-langpack-en"; \
     fi && \
     yum update -y && \
