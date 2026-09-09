@@ -155,11 +155,11 @@ jobs:
 
           - DOCKERIMAGE: linux-anvil-riscv64
             DOCKERFILE: linux-anvil
-            DOCKERTAG: "alma10"
+            DOCKERTAG: "rocky10"
             DISTRO_ARCH: "riscv64"
-            DISTRO_NAME: "almalinux"
-            DISTRO_VER: "10-kitten"
-            SHORT_DESCRIPTION: "conda-forge build image for Alma 10 Kitten on riscv64"
+            DISTRO_NAME: "rockylinux"
+            DISTRO_VER: "10"
+            SHORT_DESCRIPTION: "conda-forge build image for Rocky 10 on riscv64"
 
     env:
       DOCKERIMAGE: ${{ matrix.cfg.DOCKERIMAGE }}
