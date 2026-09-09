@@ -203,6 +203,14 @@ jobs:
         run: |
           docker info
 
+      # adapted from what `workflow_settings.free_disk_space: quick` generates on regular feedstocks
+      - name: Manage disk space
+        env:
+          OS: "ubuntu"
+        shell: bash
+        run: |
+          .scripts/free_disk_space.sh "quick"
+
       - name: Configure qemu
         run: |
           ./download-qemu-static.sh
