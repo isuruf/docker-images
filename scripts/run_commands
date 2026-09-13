@@ -46,13 +46,9 @@ chmod +x /tmp/micromamba-bootstrap/bin/micromamba
 export MAMBA_ROOT_PREFIX=/opt/conda
 
 # Ensure conda build, deployment and docker tools are present
-if [ "$(uname -m)" = "riscv64" ]; then
-    EXTRA_PKGS=""
-else
-    EXTRA_PKGS="git"
-fi
 /tmp/micromamba-bootstrap/bin/micromamba create --yes -n base -c conda-forge \
     python=${python_version} \
+    git \
     patch \
     pip \
     su-exec \
@@ -61,8 +57,7 @@ fi
     mamba \
     conda \
     conda-build \
-    anaconda-client \
-    $EXTRA_PKGS
+    anaconda-client
 
 # Put micromamba itself in condabin, next to the other tools.
 mkdir -p /opt/conda/condabin
